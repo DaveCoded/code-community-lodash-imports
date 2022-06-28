@@ -13,7 +13,7 @@ const isNamedFPLodashImport = (specifiers, importedFrom) =>
 const replaceExpression = (path, j) =>
     j.callExpression(j.identifier(path.node.callee.property.name), path.node.arguments);
 
-export default function(file, api) {
+module.exports = function(file, api) {
     const j = api.jscodeshift;
     const root = j(file.source);
 
@@ -141,4 +141,4 @@ export default function(file, api) {
     return root.toSource({
         quote: 'single'
     });
-}
+};
